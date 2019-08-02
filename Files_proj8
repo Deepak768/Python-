@@ -1,0 +1,25 @@
+7.2 Write a program that prompts for a file name, then opens that file and reads through the file, looking for lines of the form:
+X-DSPAM-Confidence:    0.8475
+Count these lines and extract the floating point values from each of the lines and compute the average of those values and produce an output as shown below. 
+Do not use the sum() function or a variable named sum in your solution.
+You can download the sample data at http://www.py4e.com/code3/mbox-short.txt when you are testing below enter mbox-short.txt as the file name.
+
+z=0
+count =0
+fname = input("Enter file name: ") 
+fh = open(fname)   //opens the file 
+#x=fh.strip()
+for line in fh: //goes line by  line 
+    if not line.startswith("X-DSPAM-Confidence:") : continue  //if what we are searching is not in the line, it will ptint
+    #print(line)
+    for ele in line: 
+        x=line.find(':')  //finds ":"
+        host=line[x+1:]  //from the line get the stuff starting with ":" and keep going through of the index
+        count+=1
+        y=float(host)
+        z+=y  //taking the sum 
+        avg=z/count  //doing the average
+        #print(count,'countis')
+    #print(host)
+print('Average spam confidence:',avg)  //prints
+#print("Done")
