@@ -1,0 +1,13 @@
+fname = input("Enter file name: ")
+if len(fname) < 1 : fname = "mbox-short.txt"  //open a file lager than line length of 1
+
+fh = open(fname)
+count=0
+for line in fh:
+    line=line.rstrip() //strips the right side of the word
+    if not line.startswith('From:'):continue  //using the start funciton is easy, it will start with the word
+    count+=1
+    x=line.split() //it will split the words in line with each segment 
+
+    print(x[1]) //it will print the word of index one after doing the split to all the email id's
+print("There were", count, "lines in the file with From as the first word")
